@@ -1,0 +1,150 @@
+<html>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.states {
+  stroke: #fff;
+  opacity: 0.4;
+  fill:#ccc;
+}
+
+.selectedName {fill : 'red'!important}
+
+.symbol {
+  fill-opacity: .8;
+  stroke: #fff;
+  opacity: 0.9
+  
+}
+
+.bar {
+    fill: #ccc;
+  stroke: #fff;
+}
+
+.point {
+  /*fill: #ef3b2c;*/
+  stroke: #fff;
+  opacity: 0.8;
+}
+
+.selected {
+  fill: #000;
+  stroke: #ccc;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+p {
+  font: 12px sans-serif;
+  margin: 0 0 2px 0;
+  padding: 0;
+}
+
+.clear-button {
+  font: 14px sans-serif;
+  cursor: pointer;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+.toolTip {
+  position: absolute;
+  width: auto;
+  height: auto;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #fff;
+  padding: 7px;
+  /*text-align: center;*/
+  pointer-events: none;
+  color:#fff;
+}
+
+
+</style>
+
+
+<head>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+<script src="https://d3js.org/d3-selection.v1.min.js"></script>
+<script src="https://d3js.org/d3-array.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-collection.v0.1.min.js"></script>
+<script src="https://d3js.org/d3-dispatch.v0.4.min.js"></script>
+<script src="https://d3js.org/d3-dsv.v0.3.min.js"></script>
+<script src="https://d3js.org/d3-request.v0.4.min.js"></script>
+<script src="https://d3js.org/d3-queue.v3.min.js"></script>
+    
+Dataset on bad drivers across the US, grouped and statistically analyzed by States
+</head>
+
+<body>
+    <div>
+        <ul>----Overlook at the data presented on a map----</ul>
+        <ul>
+            <li> The number of fatal collision per billion miles is mapped to a diverging color scale.</li>
+            <li>The insurance amount incurred by insurance companies per driver is mapped to the size of circles. </li>
+        </ul>
+    </div>
+    <div id = "map"></div>
+    <div>
+        <ul>----After looking at the map, we can percieve some patterns---- </ul>
+        <ul>
+            <li>From the color of each circle, we can get that the number of fatal collisions per billion miles has some geographical distribution patterns.</li>
+            <li>The southern area is majorly in red color, which indicates that the number of fatal collisions per billion miles in those states is above average. Meanwhile, Northeastern area is almost all green, which means they have below-average numbers of fatal collisions. </li>
+            <li>Therefore, I grouped the states into 4 geographical regions, Central Western Area, Northeastern Area, Southern Area and Western Area. And then we can dig deeper to the data with this feature in mind.</li>
+        </ul>
+        <ul>----Check out some detailed data on the fatal collisions, grouped by regions----</ul>
+    </div>
+
+    <div id = "title"></div>
+
+    <div style="float: left; width:50%">
+        <select id="option1">
+            <option value="Speeding">Sorted by Percentage of Speeding</option>
+            <option value="Alcohol-Impaired">Sorted by Percentage of Alcohol-Impaired</option>
+            <option value="Distracted">Sorted by Percentage of Distracted</option>
+            
+        </select>
+    </div>
+
+    <!--<div style="float: right; width:50%">
+        <select id="option2">
+            <option value="NotDistracted">Percentage of Not Distracted</option>
+            <option value="NoPreviousAccidents">Percentage of Not Having Previous Accisdents</option>
+        </select>
+    </div>-->
+
+    <div id = "bar"></div>
+    <div>
+        <ul>
+            <li>After having a glance at the visualization of raw data, you can check out a regression analysis on the relationship between Car Insurance Premiums and Number of Fatal collisions per billion miles.</li>
+            <li></li>
+            
+            <a href="part1scatter.html">Click here to see the regression visualization!</a>
+        </ul>
+    </div>
+    <div id = "footer">The end thank you!</div>
+
+
+
+</body>
+</html>
+
+<script src="part1map.js"></script>
+<script src="part1bar.js"></script>
